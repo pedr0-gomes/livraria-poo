@@ -2,33 +2,27 @@ package br.edu.ufca.poo.livraria;
 
 public class CadastroDeLivros {
     public static void main(String[] args) {
-        Autor autor = new Autor();
-        autor.nome = "Jubileu";
-        autor.cpf = "123.456.789-10";
-        autor.email = "jubileu@gmail.com";
+        Autor autor = new Autor("Jubileu", "123.456.789-10", "jubileu@gmail.com");
 
-        Livro livro = new Livro();
-        livro.nome = "Desbravando Java e Orientação a Objetos";
-        livro.descricao = "Recursos da linguagem";
-        livro.valor = 159.90;
-        livro.isbn = "123-45-6789-10-1";
-        livro.numeroPaginas = 100;
-        livro.autor = autor;
+        Livro livro = new Livro(autor);
+        livro.setNome("Desbravando Java e Orientação a Objetos");
+        livro.setDescricao("Recursos da linguagem");
+        livro.setValor(159.90);
+        livro.setIsbn("123-45-6789-10-1");
+        livro.setNumeroPaginas(100);
 
         livro.mostrarDetalhes();
 
-        Autor outroAutor = new Autor();
-        outroAutor.nome = "Paulo José";
-        outroAutor.email = "paulojose@gmail.com";
-        outroAutor.cpf = "321.654.987-32";
+        Autor outroAutor = new Autor("Paulo José", "321.654.987-32", "paulojose@gmail.com");
 
-        Livro outroLivro = new Livro();
-        outroLivro.nome = "Lógica para Programação";
-        outroLivro.descricao = "Crie seus primeiros programas";
-        outroLivro.valor = 102.63;
-        outroLivro.isbn = "987-65-4321-10-2";
-        outroLivro.numeroPaginas = 256;
-        outroLivro.autor = outroAutor;
+        Livro outroLivro = new Livro(
+                outroAutor,
+                "Lógica para Programação",
+                "Crie seus primeiros programas",
+                102.63,
+                256,
+                "987-65-4321-10-2"
+        );
 
         outroLivro.mostrarDetalhes();
     }

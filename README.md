@@ -1,47 +1,60 @@
 # Livraria - Projeto de POO (CC0019)
 
-Este repositório contém o desenvolvimento de um sistema de livraria em Java,
-criado ao longo da disciplina de Programação Orientada a Objetos (CC0019).
+Este repositorio contem o desenvolvimento de um sistema de livraria em Java,
+criado ao longo da disciplina de Programacao Orientada a Objetos (CC0019).
 
 ## Objetivo
 
-O objetivo do projeto é praticar os conceitos de orientação a objetos em um
-contexto próximo de um sistema real. A cada aula, novos cenários serão
-adicionados ao sistema, permitindo que a livraria evolua de forma incremental
-até se tornar um projeto mais completo.
+O objetivo do projeto e praticar conceitos de orientacao a objetos em um
+contexto proximo de um sistema real. A cada aula, novos cenarios sao
+adicionados para que a livraria evolua de forma incremental.
 
 ## Desenvolvimento incremental
 
-Este é um projeto em construção. A estrutura será mantida organizada desde o
-início para que o repositório continue claro, fácil de navegar e adequado para
-portfólio público conforme novas funcionalidades forem implementadas.
+Este e um projeto em construcao. A estrutura e mantida organizada desde o
+inicio para que o repositorio continue claro, facil de navegar e adequado para
+portfolio publico.
 
 ## Estado atual
 
 ### Aula 01
 
-A primeira versão do projeto modela os conceitos iniciais de uma livraria:
-livros, autores, associação entre objetos, construtores, métodos e comparação de
-referências.
+Primeira modelagem da livraria com criacao de objetos, atributos, metodos e
+associacao entre classes (`Livro` e `Autor`), alem de exemplos com comparacao de
+referencias.
 
-Classes implementadas:
+### Aula 02 - Encapsulamento e regras de negocio
 
-- `Livro`: representa um livro da livraria. Possui nome, descrição, valor,
-  número de páginas, ISBN e um autor associado. Também possui os comportamentos
-  `mostrarDetalhes()`, `temAutor()` e `aplicaDescontoDe()`.
-- `Autor`: representa o autor de um livro. Possui nome, e-mail e CPF, além do
-  comportamento `mostrarDetalhes()`.
-- `CadastroDeLivros`: classe executável usada para criar um autor, criar um
-  livro associado a esse autor e exibir seus detalhes.
-- `ComparandoReferencias`: classe executável usada para demonstrar a diferença
-  entre dois objetos distintos com os mesmos dados e uma referência acessada por
-  meio de outro objeto.
-- `AplicarDescontoLivro`: classe executável usada para testar a aplicação de
-  desconto em um livro.
+Nesta etapa o projeto evoluiu para aplicar regras de negocio diretamente nas
+classes de dominio:
 
-O código desta etapa foi mantido fiel ao material da Aula 01. Por isso, os
-atributos ainda são acessados diretamente pelas classes de exemplo, acompanhando
-o momento inicial da disciplina.
+- Todos os atributos de `Livro` e `Autor` foram encapsulados com `private`.
+- O acesso aos dados passou a ser feito por getters e setters.
+- `Livro.aplicaDescontoDe(double porcentagem)` agora retorna `boolean`:
+  aplica desconto ate 30% e bloqueia valores acima disso.
+- Foi criada a classe `RegrasDeDesconto` para validar os cenarios de desconto.
+- Todo `Livro` agora precisa de um `Autor` no momento da criacao
+  (dependencia obrigatoria no construtor).
+- `Livro` possui sobrecarga de construtor:
+  `Livro(Autor autor)` e
+  `Livro(Autor autor, String nome, String descricao, double valor, int numeroPaginas, String isbn)`.
+- No construtor `Livro(Autor autor)`, o ISBN recebe valor inicial
+  `"000-00-0000-00-0"`.
+- `Autor` tambem possui construtor completo:
+  `Autor(String nome, String cpf, String email)`.
+- Com a obrigatoriedade de autor no construtor, o metodo `temAutor()` foi
+  removido por redundancia.
+
+## Classes implementadas
+
+- `Livro`: entidade principal da livraria, com regras de desconto e
+  associacao obrigatoria com `Autor`.
+- `Autor`: representa os dados de autoria dos livros.
+- `CadastroDeLivros`: exemplo de cadastro e exibicao de livros/autores.
+- `AplicarDescontoLivro`: exemplo simples de aplicacao de desconto.
+- `RegrasDeDesconto`: validacao da regra de negocio de desconto maximo de 30%.
+- `ComparandoReferencias`: demonstracao de comparacao de referencias e
+  compartilhamento de objeto associado.
 
 ## Como executar
 
@@ -51,12 +64,13 @@ Compile as classes Java:
 javac -d out src/main/java/br/edu/ufca/poo/livraria/*.java
 ```
 
-Execute uma das classes de exemplo:
+Execute as classes de exemplo:
 
 ```powershell
 java -cp out br.edu.ufca.poo.livraria.CadastroDeLivros
-java -cp out br.edu.ufca.poo.livraria.ComparandoReferencias
 java -cp out br.edu.ufca.poo.livraria.AplicarDescontoLivro
+java -cp out br.edu.ufca.poo.livraria.RegrasDeDesconto
+java -cp out br.edu.ufca.poo.livraria.ComparandoReferencias
 ```
 
 ## Estrutura do projeto
@@ -71,10 +85,11 @@ src/
         CadastroDeLivros.java
         ComparandoReferencias.java
         Livro.java
+        RegrasDeDesconto.java
   test/
     java/
       br/edu/ufca/poo/livraria/
 ```
 
-- `src/main/java`: código principal da aplicação.
-- `src/test/java`: espaço reservado para testes futuros.
+- `src/main/java`: codigo principal da aplicacao.
+- `src/test/java`: espaco reservado para testes futuros.

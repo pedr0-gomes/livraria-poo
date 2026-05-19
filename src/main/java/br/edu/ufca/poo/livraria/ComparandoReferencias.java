@@ -2,27 +2,24 @@ package br.edu.ufca.poo.livraria;
 
 public class ComparandoReferencias {
     public static void main(String[] args) {
-        Autor autor1 = new Autor();
-        autor1.nome = "Luana Batista";
-        autor1.cpf = "123.321.456-78";
-        autor1.email = "luana.batista@ufca.edu.br";
-
-        Autor autor2 = new Autor();
-        autor2.nome = "Luana Batista";
-        autor2.cpf = "123.321.456-78";
-        autor2.email = "luana.batista@ufca.edu.br";
-
-        Livro livro = new Livro();
-        livro.autor = autor1;
-
-        livro.autor.nome = "José Lucas";
-
-        System.out.println(autor1.nome);
+        Autor autor1 = new Autor("Pedro Gomes", "123.321.456-78", "gomes.pedro@aluno.ufca.edu.br");
+        Autor autor2 = new Autor("Pedro Gomes", "123.321.456-78", "gomes.pedro@aluno.ufca.edu.br");
 
         if (autor1 == autor2) {
-            System.out.println("Iguais!");
+            System.out.println("autor1 e autor2 apontam para o mesmo objeto.");
         } else {
-            System.out.println("São diferentes!");
+            System.out.println("autor1 e autor2 são objetos diferentes.");
         }
+
+        Livro livro = new Livro(autor1);
+
+        if (autor1 == livro.getAutor()) {
+            System.out.println("autor1 e livro.getAutor() apontam para o mesmo objeto.");
+        }
+
+        livro.getAutor().setNome("José Lucas");
+
+        System.out.println("Nome em autor1: " + autor1.getNome());
+        System.out.println("Nome no autor do livro: " + livro.getAutor().getNome());
     }
 }
