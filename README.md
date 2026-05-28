@@ -45,14 +45,44 @@ classes de dominio:
 - Com a obrigatoriedade de autor no construtor, o metodo `temAutor()` foi
   removido por redundancia.
 
+### Aula 03 - Heranca, sobrescrita e polimorfismo
+
+Nesta etapa a livraria passou a diferenciar tipos de livro sem duplicar toda a
+estrutura da classe principal:
+
+- `Ebook` e `LivroFisico` foram criados como subclasses de `Livro`.
+- `Ebook` adiciona informacoes proprias, como formato e tamanho do arquivo.
+- `LivroFisico` adiciona o tipo de capa e calcula custo de envio com base no
+  numero de paginas.
+- `Ebook` sobrescreve `aplicaDescontoDe(double porcentagem)` para ter uma regra
+  propria: desconto maximo de 15%.
+- `CarrinhoDeCompras` recebe objetos do tipo `Livro`, permitindo adicionar tanto
+  livros fisicos quanto ebooks por meio de polimorfismo.
+- `RegistroDeVendas` demonstra o uso do carrinho com diferentes subclasses.
+- `TestaCustoEnvio` demonstra uma regra especifica de `LivroFisico`.
+
+O principal aprendizado foi separar o que e comum a todos os livros daquilo que
+pertence apenas a um tipo especifico. Essa e a ideia central de heranca bem
+usada: reaproveitar comportamento comum sem perder a responsabilidade propria de
+cada classe.
+
 ## Classes implementadas
 
 - `Livro`: entidade principal da livraria, com regras de desconto e
   associacao obrigatoria com `Autor`.
+- `LivroFisico`: especializacao de `Livro` para livros impressos, com tipo de
+  capa e calculo de custo de envio.
+- `Ebook`: especializacao de `Livro` para livros digitais, com formato, tamanho
+  de arquivo e regra propria de desconto.
 - `Autor`: representa os dados de autoria dos livros.
+- `CarrinhoDeCompras`: acumula o valor de livros adicionados ao carrinho,
+  exercitando polimorfismo com a classe `Livro`.
 - `CadastroDeLivros`: exemplo de cadastro e exibicao de livros/autores.
 - `AplicarDescontoLivro`: exemplo simples de aplicacao de desconto.
 - `RegrasDeDesconto`: validacao da regra de negocio de desconto maximo de 30%.
+- `RegistroDeVendas`: exemplo de venda com livro fisico e ebook no mesmo
+  carrinho.
+- `TestaCustoEnvio`: exemplo de calculo de envio para livro fisico.
 - `ComparandoReferencias`: demonstracao de comparacao de referencias e
   compartilhamento de objeto associado.
 
@@ -71,6 +101,8 @@ java -cp out br.edu.ufca.poo.livraria.CadastroDeLivros
 java -cp out br.edu.ufca.poo.livraria.AplicarDescontoLivro
 java -cp out br.edu.ufca.poo.livraria.RegrasDeDesconto
 java -cp out br.edu.ufca.poo.livraria.ComparandoReferencias
+java -cp out br.edu.ufca.poo.livraria.RegistroDeVendas
+java -cp out br.edu.ufca.poo.livraria.TestaCustoEnvio
 ```
 
 ## Estrutura do projeto
@@ -83,9 +115,14 @@ src/
         AplicarDescontoLivro.java
         Autor.java
         CadastroDeLivros.java
+        CarrinhoDeCompras.java
         ComparandoReferencias.java
+        Ebook.java
         Livro.java
+        LivroFisico.java
         RegrasDeDesconto.java
+        RegistroDeVendas.java
+        TestaCustoEnvio.java
   test/
     java/
       br/edu/ufca/poo/livraria/
