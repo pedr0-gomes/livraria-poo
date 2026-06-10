@@ -32,7 +32,7 @@ public class Ebook extends Livro {
     }
 
     @Override
-    boolean aplicaDescontoDe(double porcentagem) {
+    public boolean aplicaDescontoDe(double porcentagem) {
         if (porcentagem > 0.15) {
             return false;
         }

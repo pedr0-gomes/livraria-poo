@@ -31,4 +31,15 @@ public class LivroFisico extends Livro {
     public double calcularCustoEnvio() {
         return getNumeroPaginas() * 0.08;
     }
+
+    @Override 
+    public boolean aplicaDescontoDe(double porcentagem) {
+        if (porcentagem > 0.3) {
+            return false;
+        }
+
+        setValor(getValor() - getValor()*porcentagem);
+        return true;
+    }
+    
 }

@@ -11,7 +11,7 @@ public class ComparandoReferencias {
             System.out.println("autor1 e autor2 são objetos diferentes.");
         }
 
-        Livro livro = new Livro(autor1);
+        Livro livro = new LivroFisico(autor1);
 
         if (autor1 == livro.getAutor()) {
             System.out.println("autor1 e livro.getAutor() apontam para o mesmo objeto.");

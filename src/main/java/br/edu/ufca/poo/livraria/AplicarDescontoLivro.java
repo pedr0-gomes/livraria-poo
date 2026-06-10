@@ -3,7 +3,7 @@ package br.edu.ufca.poo.livraria;
 public class AplicarDescontoLivro {
     public static void main(String[] args) {
         Autor autor = new Autor("Autor Teste", "000.000.000-00", "autor.teste@email.com");
-        Livro livro = new Livro(autor);
+        Livro livro = new MiniLivro(autor);
         livro.setValor(159.9);
 
         System.out.println("Valor atual: " + livro.getValor());

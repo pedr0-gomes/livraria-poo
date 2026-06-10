@@ -1,6 +1,6 @@
 package br.edu.ufca.poo.livraria;
 
-public class Livro {
+public abstract class Livro {
     private String nome;
     private String descricao;
     private double valor;
@@ -34,14 +34,7 @@ public class Livro {
         autor.mostrarDetalhes();
     }
 
-    boolean aplicaDescontoDe(double porcentagem) {
-        if (porcentagem > 0.3) {
-            return false;
-        }
-
-        valor -= valor * porcentagem;
-        return true;
-    }
+    public abstract boolean aplicaDescontoDe(double porcentagem);
 
     public String getNome() {
         return nome;
