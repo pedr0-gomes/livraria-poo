@@ -11,13 +11,13 @@ public class MiniLivro extends Livro {
     }
 
     @Override
-    public boolean aplicaDescontoDe(double porcentagem) {
-        return false;
-    }
-
-    @Override
     void mostrarDetalhes() {
         super.mostrarDetalhes();
         System.out.println("Tipo: MiniLivro (edição reduzida)");
+    }
+
+    @Override
+    public String getResumo() {
+        return "MiniLivro\n" + super.getResumo();
     }
 }

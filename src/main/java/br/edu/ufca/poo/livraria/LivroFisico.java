@@ -1,6 +1,6 @@
 package br.edu.ufca.poo.livraria;
 
-public class LivroFisico extends Livro {
+public class LivroFisico extends Livro implements Promocional {
     private String tipoCapa;
 
     public LivroFisico(Autor autor) {
@@ -32,7 +32,7 @@ public class LivroFisico extends Livro {
         return getNumeroPaginas() * 0.08;
     }
 
-    @Override 
+    @Override
     public boolean aplicaDescontoDe(double porcentagem) {
         if (porcentagem > 0.3) {
             return false;
@@ -40,6 +40,11 @@ public class LivroFisico extends Livro {
 
         setValor(getValor() - getValor()*porcentagem);
         return true;
+    }
+
+    @Override
+    public String getResumo() {
+        return "Livro impresso\n" + super.getResumo();
     }
     
 }

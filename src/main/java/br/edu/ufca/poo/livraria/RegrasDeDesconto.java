@@ -4,7 +4,7 @@ public class RegrasDeDesconto {
     public static void main(String[] args) {
         Autor autor = new Autor("Autor Teste", "000.000.000-00", "autor.teste@email.com");
 
-            Livro livro = new MiniLivro(autor);
+        LivroFisico livro = new LivroFisico(autor);
         livro.setNome("Livro Fisico de Teste");
         livro.setValor(100.0);
 
@@ -24,8 +24,6 @@ public class RegrasDeDesconto {
         boolean descontoEbookAplicado = ebook.aplicaDescontoDe(0.15);
         boolean descontoEbookBloqueado = ebook.aplicaDescontoDe(0.2);
 
-        boolean descontoMiniLivro = miniLivro.aplicaDescontoDe(0.0000005);
-
         System.out.println("Desconto de 30% no livro aplicado? " + descontoLivroAplicado);
         System.out.println("Desconto de 40% no livro aplicado? " + descontoLivroBloqueado);
         System.out.println("Valor final do livro: " + livro.getValor());
@@ -34,7 +32,8 @@ public class RegrasDeDesconto {
         System.out.println("Desconto de 20% no ebook aplicado? " + descontoEbookBloqueado);
         System.out.println("Valor final do ebook: " + ebook.getValor());
 
-        System.out.println("Desconto de 0.0000005% no MiniLivro aplicado? " + descontoMiniLivro);
-        System.out.println("Valor final do MiniLivro: " + miniLivro.getValor());
+        System.out.println("Desconto de 10% no livro aplicado pelo default method? " +
+                livro.aplicaDescontoDe10Porcento());
+        System.out.println("Valor final do livro após default method: " + livro.getValor());
     }
 }

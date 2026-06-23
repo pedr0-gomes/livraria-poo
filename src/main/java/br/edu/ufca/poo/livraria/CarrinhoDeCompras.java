@@ -7,9 +7,8 @@ public class CarrinhoDeCompras {
 
     }
     
-    public void adiciona(Livro livro) {
-        livro.aplicaDescontoDe(0.05);
-        total += livro.getValor();
+    public void adiciona(Produto produto) {
+        total += produto.getValor();
     }
 
     public double getTotal() {

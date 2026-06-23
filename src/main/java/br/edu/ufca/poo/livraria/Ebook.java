@@ -1,6 +1,6 @@
 package br.edu.ufca.poo.livraria;
 
-public class Ebook extends Livro {
+public class Ebook extends Livro implements Promocional {
     private String formato;
     private double tamanhoEmMb;
 
@@ -47,5 +47,10 @@ public class Ebook extends Livro {
 
         System.out.println("Formato: " + formato);
         System.out.println("Tamanho em MB: " + tamanhoEmMb);
+    }
+
+    @Override
+    public String getResumo() {
+        return "Ebook\n" + super.getResumo();
     }
 }

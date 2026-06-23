@@ -1,6 +1,6 @@
 package br.edu.ufca.poo.livraria;
 
-public abstract class Livro {
+public abstract class Livro implements Produto {
     private String nome;
     private String descricao;
     private double valor;
@@ -33,8 +33,6 @@ public abstract class Livro {
 
         autor.mostrarDetalhes();
     }
-
-    public abstract boolean aplicaDescontoDe(double porcentagem);
 
     public String getNome() {
         return nome;
@@ -82,5 +80,11 @@ public abstract class Livro {
 
     public void setAutor(Autor autor) {
         this.autor = autor;
+    }
+
+    @Override
+    public String getResumo() {
+        return "Nome: " + this.getNome() + "\n" +
+                "Autor: " + this.getAutor().getNome();
     }
 }
