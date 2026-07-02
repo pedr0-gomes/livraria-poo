@@ -114,6 +114,38 @@ Racional: a separacao entre `Produto` e `Promocional` reduz acoplamento e evita
 que metodos aparecam em classes onde eles nao fazem sentido, como acontecia com
 o `MiniLivro`.
 
+### Aula 06 - Array e Collections
+
+Nesta aula o carrinho de compras ganhou comportamento mais realista, usando
+estruturas da biblioteca padrao do Java para controlar multiplicidade de itens e
+operacoes sobre o carrinho:
+
+- O carrinho deixou de depender de um array fixo e passou a usar
+  `Map<Produto, Integer>` para guardar cada produto e sua quantidade.
+- O metodo `adiciona()` passou a somar quantidades usando `getOrDefault()`.
+- Foi criado `getProdutos()` para expor o mapa de produtos quando necessario.
+- O metodo `aplicarPercentualDesconto()` passou a aplicar desconto apenas em
+  produtos que implementam `Promocional`.
+- O metodo `getTotal()` passou a calcular o valor final com base no mapa,
+  multiplicando valor unitario pela quantidade.
+- Foi criado `imprimirCarrinho()` para exibir o resumo dos itens e o total da
+  compra.
+- Foi criado `remove()` para remover uma unidade por vez do carrinho, mantendo
+  a contagem correta quando o item ainda possui mais de uma unidade.
+- `RegistroDeVendas` agora monta `LivroFisico`, `Ebook` e `Revista`, simula
+  multiplas unidades, imprime o carrinho antes e depois do desconto e tambem
+  exercita a remocao de itens.
+
+Aprendizados principais:
+
+- `ArrayList` e `HashMap` sao mais adequados do que arrays fixos quando a
+  quantidade de elementos varia.
+- `Map` e uma boa escolha para representar item + quantidade.
+- Interfaces como `Produto` e `Promocional` ajudam o carrinho a trabalhar com
+  tipos diferentes sem acoplamento desnecessario.
+- Em um carrinho, o total deve ser calculado a partir do estado atual dos itens,
+  nao mantido manualmente em paralelo.
+
 ## Classes implementadas
 
 - `Livro`: entidade principal da livraria, com regras de desconto e
@@ -128,14 +160,14 @@ o `MiniLivro`.
 - `Autor`: representa os dados de autoria dos livros.
 - `Produto`: interface que representa qualquer item vendavel da livraria.
 - `Promocional`: interface que representa os produtos que aceitam desconto.
-- `CarrinhoDeCompras`: acumula o valor de produtos adicionados ao carrinho,
-  exercitando polimorfismo com a interface `Produto`.
+- `CarrinhoDeCompras`: controla produtos e quantidades com `Map`, aplica
+  desconto seletivo, imprime o carrinho e remove unidades individualmente.
 - `CadastroDeLivros`: exemplo de cadastro e exibicao de livros/autores.
 - `AplicarDescontoLivro`: exemplo simples de aplicacao do default method de
   desconto.
 - `RegrasDeDesconto`: validacao das regras de desconto de livros e ebooks.
-- `RegistroDeVendas`: exemplo de venda com livro fisico e ebook no mesmo
-  carrinho.
+- `RegistroDeVendas`: exemplo de venda com livro fisico, ebook e revista no
+  mesmo carrinho, com desconto e remocao de item.
 - `TestaCustoEnvio`: exemplo de calculo de envio para livro fisico.
 - `ComparandoReferencias`: demonstracao de comparacao de referencias e
   compartilhamento de objeto associado.
